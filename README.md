@@ -80,3 +80,8 @@ streamlit run app.py --server.port 8501
 - Vector DB: FAISS (Facebook AI Similarity Search)
 
 - Data Sources: Google Analytics 4 (GA4), Google Cloud BigQuery
+
+
+## License
+이 프로젝트는 **CC BY-NC 4.0** 라이선스가 적용되어 있습니다.
+개인적인 학습 및 비영리 목적의 코드 활용과 수정은 자유롭게 가능하지만, **상업적인 용도로의 사용은 엄격히 금지**됩니다. 자세한 내용은 `LICENSE` 파일을 참고해 주세요.
