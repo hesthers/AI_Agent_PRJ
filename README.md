@@ -28,32 +28,35 @@
 ---
 
 ## 🏗️ 2. 시스템 구조 (Architecture)
-### 🔄 LangGraph 에이전트 워크플로우 개요
-백엔드의 비즈니스 레이어를 **LangChain 독립 서비스**와 워크플로우 상태 제어를 담당하는 **LangGraph Agent Engine**으로 세분화
+백엔드의 비즈니스 레이어를 LangChain 독립 서비스와 워크플로우 상태 제어를 담당하는 LangGraph Agent Engine으로 세분화.
 
-graph TD
-  %% 스타일 정의
-  classDef startEnd fill:#f9f9f9,stroke:#333,stroke-width:2px;
-  classDef router fill:#e1bee7,stroke:#8e24aa,stroke-width:2px,color:#000;
-  classDef qaNode fill:#bbdefb,stroke:#1e88e5,stroke-width:2px,color:#000;
-  classDef reportNode fill:#c8e6c9,stroke:#43a047,stroke-width:2px,color:#000;
-
-  %% 노드 정의 및 연결
-  Start([사용자 질문 / 태스크]) ::: startEnd --> Router{Router Agent} ::: router
-
-  %% Branch 1: QA 프로세스
-  Router -- "질의응답 상태인 경우" --> RAG[LangChain RAG / Vector Search] ::: qaNode
-  RAG --> Grade[문서 품질 검증 - Grade] ::: qaNode
-  Grade -- "부족하면 재검색" --> RAG
-  Grade -- "검증 통과" --> Answer[최종 답변 생성] ::: qaNode
-  Answer --> End([결과 반환]) ::: startEnd
-
-  %% Branch 2: 리포트 생성 프로세스
-  Router -- "리포트 요청인 경우" --> Collect[자료 수집 노드] ::: reportNode
-  Collect --> Summarize[LangChain LLM 요약 노드] ::: reportNode
-  Summarize --> PDF[PDF Generator 모듈] ::: reportNode
-  PDF --> End
-
+```text
+[ 🙋‍♂️ 사용자 질문 / 태스크 입력 ]
+               │
+               ▼
+        ╔═════════════════╗
+        ║  Router Agent   ║ ── (의도 파악 및 라우팅)
+        ╚════════╦════════╝
+                 │
+       ┌─────────┴──────────────────────────┐
+       │                                    │
+ [ 🤖 QA 모드 ]                       [ 📊 리포트 모드 ]
+       │                                    │
+       ▼                                    ▼
+[ RAG / Vector Search ]             [ 자료 수집 (Tavily API) ]
+(가이드 & 공식문서 검색)                    (웹 검색 및 본문 추출)
+       │                                    │
+       ▼                                    ▼
+[ 문서 품질 검증 (Grade) ]          [ LangChain LLM 요약 노드 ]
+(내용이 부족하면 재검색 루프)               (프롬프트 기반 마크다운 변환)
+       │                                    │
+       ▼                                    ▼
+[ 최종 답변 생성 (LLM) ]            [ PDF Generator 모듈 ]
+       │                                    │
+       └─────────────────┬──────────────────┘
+                         ▼
+                 [ 🎯 최종 결과 반환 ]
+```
 
 ### 📁 디렉토리 구조
 ```text
