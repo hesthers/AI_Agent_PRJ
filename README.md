@@ -31,7 +31,7 @@
 ### 🔄 LangGraph 에이전트 워크플로우 개요
 백엔드의 비즈니스 레이어를 **LangChain 독립 서비스**와 워크플로우 상태 제어를 담당하는 **LangGraph Agent Engine**으로 세분화
 
-```graph TD
+graph TD
   %% 스타일 정의
   classDef startEnd fill:#f9f9f9,stroke:#333,stroke-width:2px;
   classDef router fill:#e1bee7,stroke:#8e24aa,stroke-width:2px,color:#000;
@@ -53,7 +53,7 @@
   Collect --> Summarize[LangChain LLM 요약 노드] ::: reportNode
   Summarize --> PDF[PDF Generator 모듈] ::: reportNode
   PDF --> End
-```
+
 
 ### 📁 디렉토리 구조
 ```text
