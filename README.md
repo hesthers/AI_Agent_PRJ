@@ -70,8 +70,11 @@ project1/
 ### 🚀 3. 실행 방법 (How to Run)
 
 1. 환경 변수 설정
-   프로젝트 루트 디렉토리에 .env 파일을 생성하고 필요한 API 키를 설정합니다.
-   OPENAI_API_KEY=your_openai_api_key_here
+
+프로젝트 루트 디렉토리에 .env 파일을 생성하고 필요한 API 키를 설정합니다.
+```text
+OPENAI_API_KEY=your_openai_api_key_here
+```
 
 2. 패키지 설치
 
@@ -108,13 +111,13 @@ streamlit run app.py --server.port 8501
 
 
 ## 📅 5. 개발 일정 및 업데이트 이력 (Changelog)
-> 2026. 06. 19
+> 2026/06/19
 
 - 프로젝트 초기 기획 및 요구사항 정의안 작성 (Project A & B 기획)
 
 - 에이전트 아키텍처 및 디렉토리 구조 설계
 
-> 2026. 06. 20
+> 2026/06/20
 
 - 백엔드 핵심 비즈니스 로직 파일(3종) 구현 완료
 
