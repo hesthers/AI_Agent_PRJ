@@ -54,7 +54,6 @@
 [자료 수집 노드] ──> [LangChain LLM 요약 노드] ──> [PDF Generator 모듈] ───────────────────────────> [결과 반환]
 
 
-
 ### 📁 디렉토리 구조
 ```text
 project1/
@@ -66,8 +65,9 @@ project1/
 ├── requirements.txt      # 의존성 패키지 목록 (langgraph, langchain, fastapi, streamlit 등)
 ├── pdfs/                 # GA4 및 빅쿼리 참조 문서 저장소
 └── faiss_db/             # 벡터 저장소 (실행 시 로컬에 자동 생성되는 임베딩 DB)
+```
 
-## 🚀 3. 실행 방법 (How to Run)
+### 🚀 3. 실행 방법 (How to Run)
 
 1. 환경 변수 설정
    프로젝트 루트 디렉토리에 .env 파일을 생성하고 필요한 API 키를 설정합니다.
