@@ -41,7 +41,7 @@
 
 │ Router Agent  │ ──(질의응답 상태인 경우)──> [LangChain RAG / Vector Search] ──> [문서 품질 검증 (Grade)] ──┐
 
-└───────────────┘                                                                                           │ (부족하면 재검색)
+└───────────────┘                                                                                   │ (부족하면 재검색)
 
 │                                                                                                   ▼
 
@@ -102,7 +102,27 @@ streamlit run app.py --server.port 8501
 
 - Vector DB: FAISS (GA4/캠페인 가이드 문서 임베딩 검색 엔진)
 
-- PDF Engine: ReportLab 또는 WeasyPrint
+- Search API: Tavily (실시간 웹 트렌드 리서치 및 본문 추출)
+
+- PDF Engine: ReportLab / pdfkit / WeasyPrint
+
+
+## 📅 5. 개발 일정 및 업데이트 이력 (Changelog)
+> 2026. 06. 19
+
+- 프로젝트 초기 기획 및 요구사항 정의안 작성 (Project A & B 기획)
+
+- 에이전트 아키텍처 및 디렉토리 구조 설계
+
+> 2026. 06. 20
+
+- 백엔드 핵심 비즈니스 로직 파일(3종) 구현 완료
+
+- langchain_service.py: FAISS 벡터 DB 구축 및 RAG 검색 체인 구현
+
+- langgraph_service.py: LangGraph 기반 에이전트 라우팅 및 외부 툴 호출(Tavily API, PDF/Web 파싱) 로직 구현
+
+- pdf_generator.py: LLM 요약 결과를 지정된 스타일의 PDF 리포트로 변환하는 모듈 구현
 
 
 ## License
