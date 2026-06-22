@@ -116,20 +116,20 @@ streamlit run app.py --server.port 8501
 
 ## 📅 5. 개발 일정 및 업데이트 이력 (Changelog)
 > 2026/06/19
-
 - 프로젝트 초기 기획 및 요구사항 정의안 작성 (Project A & B 기획)
-
 - 에이전트 아키텍처 및 디렉토리 구조 설계
 
 > 2026/06/20
-
-- 백엔드 핵심 비즈니스 로직 파일(3종) 구현 완료
-
+- 백엔드 핵심 비즈니스 로직 및 API 서버 구현 완료
 - langchain_service.py: FAISS 벡터 DB 구축 및 RAG 검색 체인 구현
-
 - langgraph_service.py: LangGraph 기반 에이전트 라우팅 및 외부 툴 호출(Tavily API, PDF/Web 파싱) 로직 구현
-
 - pdf_generator.py: LLM 요약 결과를 지정된 스타일의 PDF 리포트로 변환하는 모듈 구현
+- main.py: FastAPI 백엔드 서버 구축 및 LangGraph 에이전트 호출 API 엔드포인트 연동 완료
+
+> 2026/06/22
+- 프론트엔드 UI 개발 및 전체 시스템 통합 완료
+- app.py: Streamlit 기반 웹 인터페이스(사이드바 파일 업로드, 챗봇 UI, 리포트 다운로드) 구현 완료
+- 전체 파일 구성 및 업로드 완료, 백엔드-프론트엔드 통신 에러 디버깅 및 시스템 연동 테스트
 
 
 ## License
