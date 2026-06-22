@@ -1,0 +1,30 @@
+# --- Web Framework & UI ---
+fastapi==0.109.2
+uvicorn==0.27.1
+streamlit==1.31.0
+requests==2.31.0
+pydantic==2.6.1
+
+# --- LangChain & LangGraph Ecosystem ---
+langchain==0.1.13
+langchain-core==0.1.33
+langchain-community==0.0.29
+langchain-openai==0.0.8
+langgraph==0.0.26
+
+# --- Vector Database (FAISS) ---
+faiss-cpu==1.8.0
+
+# --- Document Loaders & Parsing ---
+pypdf==4.1.0           # PyPDFLoader, PyPDFDirectoryLoader 작동에 필수
+beautifulsoup4==4.12.3 # WebBaseLoader(웹 링크 파싱) 작동에 필수
+
+# --- External APIs ---
+tavily-python==0.3.3   # TavilyClient 리서치 툴
+
+# --- PDF Generation ---
+markdown==3.5.2
+pdfkit==1.0.0
+
+# --- Utilities ---
+python-dotenv==1.0.1

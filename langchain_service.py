@@ -150,5 +150,28 @@ class LangChainService:
         }
         self.chain = data | template | self.llm | StrOutputParser()
 
-
+    def get_retrieved_docs(self, question: str) -> List[Dict]:
+        """
+        사용자의 질문과 가장 유사한 문서(PDF 청크 및 웹 링크 내용)를 FAISS 벡터 DB에서 검색하여 메타데이터와 함께 반환.
+        """
+        if not self.vector_store:
+            if not self._load_vector_store():
+                return []
+        
+        try:
+            # FAISS DB에서 관련된 청크 검색
+            docs = self.retriever.invoke(question)
+            
+            # FastAPI에서 JSON 형태로 프론트엔드에 전송할 수 있도록 딕셔너리로 변환
+            result = []
+            for doc in docs:
+                result.append({
+                    "content": doc.page_content,
+                    "metadata": doc.metadata  # 여기에 source, page 등의 정보가 들어있음
+                })
+                
+            return result
+        except Exception as e:
+            print(f"[Search Error] 문서 검색 중 오류: {str(e)}")
+            return []
     

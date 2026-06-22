@@ -67,8 +67,13 @@ def generate_pdf(text: str, file_path: str) -> bool:
         # 4. 저장할 디렉토리가 없으면 자동 생성
         os.makedirs(os.path.dirname(file_path), exist_ok=True)
 
-        # 5. HTML을 PDF로 최종 변환 및 저장
-        pdfkit.from_string(html_content, file_path, options=options)
+        # 💡 핵심 수정: 윈도우 환경 wkhtmltopdf.exe 절대 경로 지정
+        # 만약 다른 드라이브나 폴더에 설치하셨다면 아래 경로를 알맞게 수정해 주세요.
+        path_wkhtmltopdf = r'C:\Program Files\wkhtmltopdf\bin\wkhtmltopdf.exe'
+        config = pdfkit.configuration(wkhtmltopdf=path_wkhtmltopdf)
+
+        # 5. HTML을 PDF로 최종 변환 및 저장 (configuration 옵션 추가)
+        pdfkit.from_string(html_content, file_path, options=options, configuration=config)
         return True
 
     except Exception as e:

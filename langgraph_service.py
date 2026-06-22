@@ -270,8 +270,8 @@ workflow.add_node("report_node", report_node)
 workflow.set_conditional_entry_point(
     route_task,
     {
-        "qa": "qa_node",
-        "report": "report_node"
+        "qa_node": "qa_node",         
+        "report_node": "report_node"  
     }
 )
 
